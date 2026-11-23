@@ -1,0 +1,9 @@
+Gripper workspace size: [0.75823578 1.07414986 0.79873248]
+missing ['fine_level_embed'] unexpected []
+fps {'s_per_step_mean': 1.8577658891677857, 's_per_step_min': 1.8427677154541016, 'peak_mem_mib': 352.17431640625}
+missing ['fine_level_embed'] unexpected []
+part {'s_per_step_mean': 2.0306692242622377, 's_per_step_min': 2.0130228996276855, 'peak_mem_mib': 352.17529296875}
+missing ['fine_level_embed'] unexpected []
+zoom {'s_per_step_mean': 1.882580304145813, 's_per_step_min': 1.8699569702148438, 'peak_mem_mib': 352.17529296875}
+missing ['fine_level_embed'] unexpected []
+both {'s_per_step_mean': 2.0055064797401427, 's_per_step_min': 1.9903454780578613, 'peak_mem_mib': 352.17529296875}

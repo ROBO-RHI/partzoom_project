@@ -1,0 +1,22 @@
+{
+ "fps": {
+  "s_per_step_mean": 1.8577658891677857,
+  "s_per_step_min": 1.8427677154541016,
+  "peak_mem_mib": 352.17431640625
+ },
+ "part": {
+  "s_per_step_mean": 2.0306692242622377,
+  "s_per_step_min": 2.0130228996276855,
+  "peak_mem_mib": 352.17529296875
+ },
+ "zoom": {
+  "s_per_step_mean": 1.882580304145813,
+  "s_per_step_min": 1.8699569702148438,
+  "peak_mem_mib": 352.17529296875
+ },
+ "both": {
+  "s_per_step_mean": 2.0055064797401427,
+  "s_per_step_min": 1.9903454780578613,
+  "peak_mem_mib": 352.17529296875
+ }
+}

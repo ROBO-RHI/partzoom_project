@@ -1,0 +1,6 @@
+Gripper workspace size: [0.75823578 1.07414986 0.79873248]
+missing [] unexpected []
+insert_onto_square_peg n=200 pos 0.50cm rot 17.54deg
+place_shape_in_shape_sorter n=198 pos 0.72cm rot 20.50deg
+slide_block_to_color_target n=122 pos 0.43cm rot 1.58deg
+token stats {'coarse_rel_tokens': 29.986250217755636, 'coarse_rel_kept': 4.313750045374036, 'coarse_rel_retention': 0.11884344457648695, 'frac_budget_rel': 0.00526709427407089, 'fine_rel_tokens': 202.42375179926555, 'fine_rel_kept': 155.36708466211954, 'crop_valid_frac': 0.40677083767950534, 'crop_zoom': 1.6789518351356187}

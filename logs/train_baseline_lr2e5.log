@@ -1,0 +1,51 @@
+Gripper workspace size: [0.75823578 1.07414986 0.79873248]
+Created dataset from data/partzoom/packaged/train with 300
+Can't find dataset folder data/partzoom/packaged/val/insert_onto_square_peg+1
+Can't find dataset folder data/partzoom/packaged/val/insert_onto_square_peg+3
+Can't find dataset folder data/partzoom/packaged/val/insert_onto_square_peg+5
+Can't find dataset folder data/partzoom/packaged/val/insert_onto_square_peg+7
+Can't find dataset folder data/partzoom/packaged/val/insert_onto_square_peg+10
+Can't find dataset folder data/partzoom/packaged/val/insert_onto_square_peg+12
+Can't find dataset folder data/partzoom/packaged/val/insert_onto_square_peg+15
+Can't find dataset folder data/partzoom/packaged/val/insert_onto_square_peg+18
+Can't find dataset folder data/partzoom/packaged/val/insert_onto_square_peg+19
+Created dataset from data/partzoom/packaged/val with 60
+init from train_logs/diffuser_actor_peract.pth missing: ['fine_level_embed'] unexpected: []
+Model parameters: 3584410
+
+
+
+
+
+Train evaluation.......
+[train] step 999: traj_action_mse=0.2239, traj_pos_l2=0.0042, traj_pos_acc_001=0.9468, traj_rot_l1=0.1523, traj_rot_acc_0025=0.6775, traj_gripper=0.9926, pos_l2_final=0.0042, pos_l2_final<0.01=0.9468, rot_l1=0.1523, rot_l1<0025=0.6775
+Test evaluation.......
+[val] step 999: traj_action_mse=0.2224, traj_pos_l2=0.0032, traj_pos_acc_001=0.9712, traj_rot_l1=0.1644, traj_rot_acc_0025=0.6842, traj_gripper=0.9494, pos_l2_final=0.0032, pos_l2_final<0.01=0.9712, rot_l1=0.1644, rot_l1<0025=0.6842
+
+
+
+
+
+Train evaluation.......
+[train] step 1999: traj_action_mse=0.2307, traj_pos_l2=0.0026, traj_pos_acc_001=0.9667, traj_rot_l1=0.1485, traj_rot_acc_0025=0.6646, traj_gripper=0.9926, pos_l2_final=0.0026, pos_l2_final<0.01=0.9667, rot_l1=0.1485, rot_l1<0025=0.6646
+Test evaluation.......
+[val] step 1999: traj_action_mse=0.2198, traj_pos_l2=0.0039, traj_pos_acc_001=0.9476, traj_rot_l1=0.1722, traj_rot_acc_0025=0.6762, traj_gripper=0.9572, pos_l2_final=0.0039, pos_l2_final<0.01=0.9476, rot_l1=0.1722, rot_l1<0025=0.6762
+
+
+
+
+
+Train evaluation.......
+[train] step 2999: traj_action_mse=0.2380, traj_pos_l2=0.0027, traj_pos_acc_001=0.9732, traj_rot_l1=0.1367, traj_rot_acc_0025=0.6606, traj_gripper=0.9926, pos_l2_final=0.0027, pos_l2_final<0.01=0.9732, rot_l1=0.1367, rot_l1<0025=0.6606
+Test evaluation.......
+[val] step 2999: traj_action_mse=0.2257, traj_pos_l2=0.0033, traj_pos_acc_001=0.9550, traj_rot_l1=0.1688, traj_rot_acc_0025=0.6497, traj_gripper=0.9572, pos_l2_final=0.0033, pos_l2_final<0.01=0.9550, rot_l1=0.1688, rot_l1<0025=0.6497
+
+
+
+
+
+Train evaluation.......
+[train] step 3999: traj_action_mse=0.2306, traj_pos_l2=0.0025, traj_pos_acc_001=0.9743, traj_rot_l1=0.1005, traj_rot_acc_0025=0.6867, traj_gripper=0.9926, pos_l2_final=0.0025, pos_l2_final<0.01=0.9743, rot_l1=0.1005, rot_l1<0025=0.6867
+Test evaluation.......
+[val] step 3999: traj_action_mse=0.2153, traj_pos_l2=0.0058, traj_pos_acc_001=0.9414, traj_rot_l1=0.1767, traj_rot_acc_0025=0.6856, traj_gripper=0.9572, pos_l2_final=0.0058, pos_l2_final<0.01=0.9414, rot_l1=0.1767, rot_l1<0025=0.6856
+
