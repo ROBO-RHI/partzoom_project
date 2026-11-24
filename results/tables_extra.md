@@ -10,6 +10,18 @@ All computed from eval_logs/partzoom/*.jsonl and eval_logs/offline/*.json. '*' m
 | `both_lr2e5` | `baseline_lr2e5` | sort shape | 50 | 42 | +8.0 | 10 | 6 | 0.454 |
 | `both_lr2e5` | `baseline_lr2e5` | slide block | 98 | 94 | +4.0 | 3 | 1 | 0.625 |
 | `both_lr2e5` | `baseline_lr2e5` | pooled | 63 | 61 | +2.0 | 20 | 17 | 0.743 |
+| `both_lr1e5` | `baseline_lr1e5` | insert peg | 40 | 56 | -16.0 | 6 | 14 | 0.115 |
+| `both_lr1e5` | `baseline_lr1e5` | sort shape | 46 | 44 | +2.0 | 4 | 3 | 1.000 |
+| `both_lr1e5` | `baseline_lr1e5` | slide block | 98 | 94 | +4.0 | 3 | 1 | 0.625 |
+| `both_lr1e5` | `baseline_lr1e5` | pooled | 61 | 65 | -3.3 | 13 | 18 | 0.473 |
+| `baseline_lr1e5` | `baseline_lr2e5` | insert peg | 56 | 48 | +8.0 | 11 | 7 | 0.481 |
+| `baseline_lr1e5` | `baseline_lr2e5` | sort shape | 44 | 42 | +2.0 | 7 | 6 | 1.000 |
+| `baseline_lr1e5` | `baseline_lr2e5` | slide block | 94 | 94 | +0.0 | 3 | 3 | 1.000 |
+| `baseline_lr1e5` | `baseline_lr2e5` | pooled | 65 | 61 | +3.3 | 21 | 16 | 0.511 |
+| `both_lr1e5` | `released` | insert peg | 40 | 56 | -16.0 | 5 | 13 | 0.096 |
+| `both_lr1e5` | `released` | sort shape | 46 | 44 | +2.0 | 5 | 4 | 1.000 |
+| `both_lr1e5` | `released` | slide block | 98 | 96 | +2.0 | 2 | 1 | 1.000 |
+| `both_lr1e5` | `released` | pooled | 61 | 65 | -4.0 | 12 | 18 | 0.362 |
 | `baseline_lr2e5` | `baseline` | insert peg | 48 | 26 | +22.0 | 13 | 2 | 0.007 * |
 | `baseline_lr2e5` | `baseline` | sort shape | 42 | 34 | +8.0 | 7 | 3 | 0.344 |
 | `baseline_lr2e5` | `baseline` | slide block | 94 | 94 | +0.0 | 2 | 2 | 1.000 |
@@ -46,6 +58,8 @@ All computed from eval_logs/partzoom/*.jsonl and eval_logs/offline/*.json. '*' m
 | `both_lr2e5` | part / zoom / part | 217 | 169 | 90% | 21% | 251 | 2.53× | 81% |
 | `zoom_object` | fps / zoom / object | 1085 | 278 | 33% | 34% | 256 | 1.69× | 89% |
 | `zoom_random` | fps / zoom / random | 30 | 4 | 12% | 1% | 155 | 1.68× | 41% |
+| `baseline_lr1e5` | fps / – / part | 217 | 89 | 59% | 11% | – | – | – |
+| `both_lr1e5` | part / zoom / part | 217 | 169 | 90% | 21% | 251 | 2.53× | 81% |
 
 ## offline_paired_bootstrap (difference in position error, paired by keyframe, CI by resampling val episodes)
 
@@ -62,6 +76,9 @@ All computed from eval_logs/partzoom/*.jsonl and eval_logs/offline/*.json. '*' m
 | `released_zoom` | `released` | +0.03 [-0.07, +0.09] | +0.00 [-0.16, +0.10] | 60 |
 | `zoom` | `zoom_object` | -0.03 [-0.12, +0.04] | -0.02 [-0.13, +0.06] | 60 |
 | `zoom` | `zoom_random` | -0.18 [-0.33, -0.06] * | -0.31 [-0.57, -0.10] * | 60 |
+| `both_lr1e5` | `baseline_lr1e5` | -0.04 [-0.13, +0.04] | -0.07 [-0.22, +0.06] | 60 |
+| `baseline_lr1e5` | `released` | -0.11 [-0.26, +0.01] | -0.18 [-0.42, +0.02] | 60 |
+| `both_lr1e5` | `released` | -0.15 [-0.34, -0.01] * | -0.25 [-0.56, -0.01] * | 60 |
 
 ## sweeps (eval-time only: models trained with default settings; offline val errors)
 

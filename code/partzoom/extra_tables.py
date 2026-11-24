@@ -26,6 +26,9 @@ from analyze import TASKS, SHORT, mcnemar_exact, load_rollouts  # noqa
 OFF = REPO / "eval_logs/offline"
 PAIRS = [  # (variant, reference)
     ("both_lr2e5", "baseline_lr2e5"),
+    ("both_lr1e5", "baseline_lr1e5"),
+    ("baseline_lr1e5", "baseline_lr2e5"),
+    ("both_lr1e5", "released"),
     ("baseline_lr2e5", "baseline"),
     ("both_lr2e5", "both"),
     ("zoom", "zoom_object"),
@@ -147,7 +150,9 @@ def md_boot():
              ("both_lr2e5", "baseline_lr2e5"), ("baseline", "released"),
              ("baseline_lr2e5", "released"), ("both_lr2e5", "released"),
              ("released_part", "released"), ("released_zoom", "released"),
-             ("zoom", "zoom_object"), ("zoom", "zoom_random")]
+             ("zoom", "zoom_object"), ("zoom", "zoom_random"),
+             ("both_lr1e5", "baseline_lr1e5"), ("baseline_lr1e5", "released"),
+             ("both_lr1e5", "released")]
     out = ["| variant | reference | Δ pos err cm, all kf [95% CI] | Δ pos err cm, interaction kf [95% CI] | episodes |",
            "|---|---|---|---|---|"]
     for n, ref in comps:
@@ -176,7 +181,8 @@ def main():
     a = p.parse_args()
     runs = load_rollouts(str(REPO / "eval_logs/partzoom"), step_cap=12)
     off_names = ["released", "baseline", "baseline_lr2e5", "part", "released_part",
-                 "zoom", "released_zoom", "both", "both_lr2e5", "zoom_object", "zoom_random"]
+                 "zoom", "released_zoom", "both", "both_lr2e5", "zoom_object", "zoom_random",
+                 "baseline_lr1e5", "both_lr1e5"]
     md = ["# Extra tables (partzoom/extra_tables.py)\n",
           "All computed from eval_logs/partzoom/*.jsonl and eval_logs/offline/*.json. "
           "'*' marks p < 0.05 (McNemar) or a 95% CI excluding 0 (bootstrap).\n",

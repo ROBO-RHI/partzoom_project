@@ -32,14 +32,14 @@ There are three disjoint splits for each task. Each split uses its own seed base
 |---|---|---|---|---|
 | train | 100 | 1000 | yes | fine-tuning all variants |
 | val | 20 | 2000 | yes | validation during training (every 1000 iterations) and offline per-keyframe errors |
-| test | 100 (first **50** used in all rollout tables) | 3000 | no, seeds only | closed-loop rollouts |
+| test | 100 (first **50** used in the main rollout tables; all 100 in the round-3 table `tables_100scenes.md`) | 3000 | no, seeds only | closed-loop rollouts |
 
 For episode `i` of a split with seed base `B`:
 
 1. **Variation:** `np.random.RandomState(B + i).randint(n_variations)`. Each episode's variation is a pure function of `(B, i)`, so the variation mix is random but reproducible.
 2. **Scene randomisation:** `np.random.seed(B*1000 + i)`, then `task.get_demos(1, live_demos=True)`. Object poses are therefore also reproducible.
 3. **Stored state:** the RNG state that RLBench saves with the demo (`demo.random_seed`) is written to `data/seeds/<split>/<task>/ep<i>.pkl`, together with the variation, keyframe count and demo length.
-4. **Test-time reset:** evaluation reconstructs the exact initial scene with `task.reset_to_demo(Demo([], random_seed=...))`. Every variant is therefore evaluated on exactly the same 50 scenes per task, which is what makes the paired (McNemar) comparisons in RESULTS.md valid.
+4. **Test-time reset:** evaluation reconstructs the exact initial scene with `task.reset_to_demo(Demo([], random_seed=...))`. Every variant is therefore evaluated on exactly the same scenes (episodes 0–49 for the main tables, 0–99 for the round-3 variants), which is what makes the paired (McNemar) comparisons in RESULTS.md valid.
 
 If motion planning fails while collecting a demo, the generator retries up to 5 times from the same seed. Each retry continues from the current RNG state, so it samples a new scene. Planning failures were rare: 9 retries across 360 imaged episodes and 300 test seeds (all "Could not collect demos"), and no episode needed all 5 attempts. Since a failed demo is simply replaced by a new scene, this does not bias the test set toward easy scenes beyond what RLBench's own demo feasibility check already does.
 

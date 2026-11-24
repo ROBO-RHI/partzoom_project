@@ -1,0 +1,28 @@
+The write-up is finished. **The released checkpoint is still the best configuration (65% pooled, 98/150), and nothing beats it.** All results were already complete, so nothing was rerun.
+
+**Completeness:** all 11 variants have 3 tasks × 50 distinct episodes, and all 28 offline JSONs plus `bench_infer.json` exist with full row counts. I reran `make_package.py` and `tables.md` came out identical.
+
+**Main findings in the final RESULTS.md**
+- **Best fine-tuned model:** `both_lr2e5` (part sampling + zoom, lr 2e-5) at 63% (95/150). It is 2 points below the released checkpoint, which is not significant (p = 0.76). It is ahead on sort shape and slide block and 14 points behind on insert peg.
+- **Against the matched baselines, nothing is significant.**
+  - At lr 1e-4, the methods beat the fine-tuned baseline by +3 to +5 points pooled (p ≥ 0.22).
+  - At lr 2e-5, `both_lr2e5` beats `baseline_lr2e5` by only +2 (p = 0.74).
+- **Fine-tuning regression:** fine-tuning at lr 1e-4 costs 14 points against the released checkpoint (p = 0.001). The lower learning rate shrinks that to −4 (p = 0.36), a significant +10 over the lr 1e-4 baseline, but doesn't close it.
+- **Zero-shot:** applying the methods to the released weights without training slightly hurts: part sampling −3.3, part zoom −6.0, neither significant.
+- **Part vs object vs random zoom:** whole-object zoom (58%) ≥ part zoom (55%) > random-region zoom (49%). Only object vs random is significant. So zooming on the relevant area helps, but there is no evidence that zooming on the *part* specifically matters.
+- **Offline accuracy:** zoom roughly halves the position error at interaction keyframes on insert peg (0.63 → 0.23–0.30 cm). This doesn't improve rotation and doesn't turn into significantly more successes.
+- **Sweeps:** zoom's offline gain survives 1 cm of region noise, halves at 2 cm, and at 4 cm zoom is worse than the baseline. Crop margin (0.1–0.5), zoom token budget and rel_cap barely matter.
+- **Cost:** part sampling adds 9% per step, zoom 1%, both 8% (1.86 → 2.01 s/step). Peak GPU memory is unchanged.
+
+**Changes I made**
+- **Two new scripts** in `~/3d_diffuser_actor/partzoom/`, also copied into the package:
+  - `extra_tables.py` writes `results/tables_extra.md`. It adds the tables `tables.md` lacked: the lr 2e-5 matched comparison, the zoom-control comparisons, offline token retention, bootstrap CIs, the sweeps and the benchmark.
+  - `make_fig.py` writes `figs/success_rates.png`, which RESULTS.md references.
+- **RESULTS.md** is rewritten as final with your structure. A script check confirmed all 76 paired-test numbers in it match the generated tables.
+- **README.md:** status line and folder layout updated. DATASET.md is unchanged.
+- **Logs and memory:** I updated the memory file and its index line, and appended a summary to `autopilot.log`. The autopilot wrapper creates FINAL_DONE itself once this run exits.
+
+**Things to check**
+- I didn't keep the published 3DDA slide-block number (100%) from the interim draft. My recollection is 97.6%, and web search wasn't permitted, so I couldn't check it; RESULTS.md now just calls slide block "near ceiling". The insert-peg (65.6%) and sort-shape (44.0%) figures are kept as before.
+- The offline rotation metric doesn't account for symmetry. The large all-keyframe rotation errors come from the first (grasp) keyframe, where errors are 74–114°, most likely because of the 90° symmetry of the ring and shapes. RESULTS.md says this.
+- `MEMORY.md` points to `use-tmux-for-jobs.md`, which doesn't exist. I left it alone.

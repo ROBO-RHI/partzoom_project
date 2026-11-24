@@ -2,7 +2,7 @@
 
 This folder holds the experiments for the 16-831 project proposal *"Part-aware sampling and part zoom for 3D Diffuser Actor"* (Harshvardhan Aditya, Ishita Srivastava, Raghav Mehta). Everything needed to read, check or rerun the results is here.
 
-- **Results:** [RESULTS.md](RESULTS.md). **Status: final (2026-11-23).** All 11 variants × 3 tasks × 50 closed-loop episodes, the offline evaluations, the eval-time sweeps and the inference benchmark are complete. Headline: the released checkpoint remains best (65% pooled). The best fine-tuned model is part sampling + zoom at lr 2e-5 (63%, n.s. vs released, +2 n.s. vs its matched baseline). At lr 1e-4 the methods are +3 to +5 points over the matched baseline, also not significant.
+- **Results:** [RESULTS.md](RESULTS.md). **Status: final after round 3 (2026-11-24).** Rounds 1–2: 11 variants × 3 tasks × 50 closed-loop episodes, the offline evaluations, the eval-time sweeps and the inference benchmark. Round 3: 100 test scenes per task for six variants, including a new matched pair at lr 1e-5. Headline: **nothing beats the released checkpoint.** On 100 scenes it scores 63% (189/300), and every configuration tested is within 2 points of it (all p ≥ 0.60). **Part sampling + zoom does not beat its matched baseline:** −1.7 (p = 0.64) at lr 2e-5 and −3.0 (p = 0.33) at lr 1e-5 on 100 scenes, with insert peg consistently worse (−13 and −17; the latter p = 0.009 uncorrected, not significant after multiple-comparison correction). The +3 to +5 point gains at lr 1e-4 (50 scenes, n.s.) most likely reflect a poorly tuned fine-tuning recipe.
 - **How the data was made:** [DATASET.md](DATASET.md)
 
 ## What was tested
@@ -20,15 +20,18 @@ The base model is **3D Diffuser Actor (3DDA)** with its released 18-task PerAct 
 
 The total token budget is identical (819) for every variant. Regions are **oracle (privileged) simulator information**; see DATASET.md §5.
 
+Each method was fine-tuned from the released checkpoint with the same recipe. FPS, part, zoom, both and the two zoom controls were trained at lr 1e-4. Matched FPS/both pairs were also trained at lr 2e-5 (`baseline_lr2e5`, `both_lr2e5`) and lr 1e-5 (`baseline_lr1e5`, `both_lr1e5`; round 3). The released weights were also run with part sampling or zoom applied zero-shot. The full list of runs is in RESULTS.md §1.
+
 ## Folder layout
 
 ```
 README.md  RESULTS.md  DATASET.md
 results/
-  tables.md            auto-generated tables (make_package.py)
-  tables_extra.md      lr-2e-5 / zoom-control paired tests, offline token retention,
+  tables.md            auto-generated tables, 50 test scenes per task (make_package.py)
+  tables_extra.md      lr-2e-5 / lr-1e-5 / zoom-control paired tests, offline token retention,
                        bootstrap CIs, eval-time sweeps, benchmark (extra_tables.py)
-                       (all numbers in RESULTS.md come from these two files)
+  tables_100scenes.md  round 3: 100 test scenes per task + paired McNemar tests (ext_tables.py)
+                       (all numbers in RESULTS.md come from these three files)
   summary.json         machine-readable success counts + validation curves
   rollouts/<variant>/<task>.jsonl   one line per test episode: success, steps, failure type,
                                     per-step predicted keyposes, token statistics, inference time
@@ -55,8 +58,10 @@ code/                  runnable snapshot: upstream 3DDA modules + partzoom/ (our
 | `offline_eval.py` | per-keyframe position and rotation errors on val demos |
 | `analyze.py`, `make_package.py` | tables, Wilson CIs, exact McNemar tests; rebuilds this folder |
 | `extra_tables.py`, `make_fig.py` | extra tables (`results/tables_extra.md`) and `figs/success_rates.png`; run after `make_package.py` |
+| `ext_tables.py` | round-3 100-scene table and paired tests (`results/tables_100scenes.md`) |
 | `bench_infer.py` | clean inference-time and memory benchmark |
 | `train_variant.sh`, `run_eval.sh`, `pipeline*.sh`, `gen_all.sh` | the exact commands that were run |
+| `tmux/r3_train.sh`, `tmux/r3_eval.sh`, `tmux/r3_final.sh` | round 3: lr-1e-5 training, 100-scene evals, offline evals + tables |
 
 ## Rerunning
 
@@ -68,7 +73,7 @@ bash partzoom/train_variant.sh zoom 4000 --zoom 1
 bash partzoom/run_eval.sh zoom train_logs/partzoom/zoom/last.pth insert_onto_square_peg 0:50 --max_steps 12 --zoom 1
 # tables:
 python partzoom/make_package.py --no_ckpt --out ..
-python partzoom/extra_tables.py --out .. && python partzoom/make_fig.py --out ..
+python partzoom/extra_tables.py --out .. && python partzoom/ext_tables.py --out .. && python partzoom/make_fig.py --out ..
 ```
 
 The flags for every variant, at training and evaluation, are listed in `code/partzoom/pipeline.sh`, `pipeline2.sh` and `tmux/eval_worker.sh`; the offline evaluations, sweeps and benchmark are in `pipeline3.sh`. Each training run's full command line is saved in `checkpoints/<variant>/hparams.json` under `reproducibility.command_line`.

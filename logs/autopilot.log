@@ -1,1 +1,14 @@
 [2026-11-23 12:30:01] launching claude (finalize)
+[2026-11-23 finalize] Summary of the finalize run (Claude, headless):
+  - Completeness: all 11 variants x 3 tasks x 50 episodes present (unique episodes checked); all 28 offline jsons + bench_infer.json present with 520 rows each. Nothing rerun.
+  - Reran partzoom/make_package.py (tables.md unchanged). Added partzoom/extra_tables.py -> results/tables_extra.md (lr2e5 matched + zoom-control McNemar tests, offline token retention incl. FPS, paired bootstrap CIs, sweeps, bench) and partzoom/make_fig.py -> figs/success_rates.png.
+  - Rewrote ~/partzoom_project/RESULTS.md as final (key findings, all comparisons, sweeps, cost, discussion, limitations); all 76 paired-test numbers cross-checked against the tables. README status/layout updated; DATASET.md unchanged.
+  - Headline: released ckpt best (65%); best fine-tuned both_lr2e5 63% (n.s. vs released, +2 n.s. vs baseline_lr2e5); lr1e-4 methods +3..+5 vs matched baseline (n.s.); lr 2e-5 cut the fine-tuning regression from -14 to -4.
+  - Memory file updated.
+[2026-11-23 12:37:11] claude (finalize) exited rc=0
+[2026-11-23 12:37:11] finalization done; autopilot will stay idle
+[2026-11-23 18:00:01] no output for 323 min -> health check
+[2026-11-23 18:00:01] launching claude (health)
+[2026-11-23 18:01 health] Diagnosis: the stall alert was a false alarm. Rounds 1-2 finished at 12:12 (PACKAGE_DONE) and nothing was written until round 3 began. At 18:00 the user's interactive VS Code Claude session replaced the old windows with status/r3train/r3eval1/r3eval2/r3final and launched round 3: TRAIN_START baseline_lr1e5 (lr 1e-5, 0/4000 iters) and R3EVAL_START released worker1 (episodes 0:100, max_steps 12). Worker 2 is waiting for R3TRAIN_DONE and r3final for 2x R3EVALQ_DONE, as designed. No tracebacks. GPU T4 is idle while the processes load, 12G RAM is available, and finalize_r3.md, ext_tables.py, extra_tables.py and make_fig.py are all present. The "Can't find dataset folder ...+19" lines also appeared in earlier runs. Action: none. Nothing changed.
+[2026-11-23 18:00:57] claude (health) exited rc=0
+[2026-11-24 03:30:01] launching claude (finalize_r3)

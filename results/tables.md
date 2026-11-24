@@ -15,6 +15,8 @@ Success rates: % (successes/episodes) [Wilson 95% CI]; max 12 steps per episode.
 | `both` | **36** (18/50) [24–50] | **38** (19/50) [26–52] | **96** (48/50) [87–99] | **57** (85/150) [49–64] | 56.7 |
 | `baseline_lr2e5` | **48** (24/50) [35–61] | **42** (21/50) [29–56] | **94** (47/50) [84–98] | **61** (92/150) [53–69] | 61.3 |
 | `both_lr2e5` | **42** (21/50) [29–56] | **50** (25/50) [37–63] | **98** (49/50) [90–100] | **63** (95/150) [55–71] | 63.3 |
+| `baseline_lr1e5` | **56** (28/50) [42–69] | **44** (22/50) [31–58] | **94** (47/50) [84–98] | **65** (97/150) [57–72] | 64.7 |
+| `both_lr1e5` | **40** (20/50) [28–54] | **46** (23/50) [33–60] | **98** (49/50) [90–100] | **61** (92/150) [53–69] | 61.3 |
 | `zoom_object` | **44** (22/50) [31–58] | **38** (19/50) [26–52] | **92** (46/50) [81–97] | **58** (87/150) [50–66] | 58.0 |
 | `zoom_random` | **24** (12/50) [14–37] | **26** (13/50) [16–40] | **96** (48/50) [87–99] | **49** (73/150) [41–57] | 48.7 |
 
@@ -54,6 +56,14 @@ Success rates: % (successes/episodes) [Wilson 95% CI]; max 12 steps per episode.
 | `both_lr2e5` | sort shape | +16.0 | 14 | 6 | 0.115 |
 | `both_lr2e5` | slide block | +4.0 | 3 | 1 | 0.625 |
 | `both_lr2e5` | pooled | +12.0 | 29 | 11 | 0.006 * |
+| `baseline_lr1e5` | insert peg | +30.0 | 19 | 4 | 0.003 * |
+| `baseline_lr1e5` | sort shape | +10.0 | 10 | 5 | 0.302 |
+| `baseline_lr1e5` | slide block | +0.0 | 2 | 2 | 1.000 |
+| `baseline_lr1e5` | pooled | +13.3 | 31 | 11 | 0.003 * |
+| `both_lr1e5` | insert peg | +14.0 | 14 | 7 | 0.189 |
+| `both_lr1e5` | sort shape | +12.0 | 9 | 3 | 0.146 |
+| `both_lr1e5` | slide block | +4.0 | 3 | 1 | 0.625 |
+| `both_lr1e5` | pooled | +10.0 | 26 | 11 | 0.020 * |
 | `zoom_object` | insert peg | +18.0 | 15 | 6 | 0.078 |
 | `zoom_object` | sort shape | +4.0 | 7 | 5 | 0.774 |
 | `zoom_object` | slide block | -2.0 | 2 | 3 | 1.000 |
@@ -99,6 +109,14 @@ Success rates: % (successes/episodes) [Wilson 95% CI]; max 12 steps per episode.
 | `both_lr2e5` | sort shape | +6.0 | 10 | 7 | 0.629 |
 | `both_lr2e5` | slide block | +2.0 | 2 | 1 | 1.000 |
 | `both_lr2e5` | pooled | -2.0 | 19 | 22 | 0.755 |
+| `baseline_lr1e5` | insert peg | +0.0 | 9 | 9 | 1.000 |
+| `baseline_lr1e5` | sort shape | +0.0 | 4 | 4 | 1.000 |
+| `baseline_lr1e5` | slide block | -2.0 | 1 | 2 | 1.000 |
+| `baseline_lr1e5` | pooled | -0.7 | 14 | 15 | 1.000 |
+| `both_lr1e5` | insert peg | -16.0 | 5 | 13 | 0.096 |
+| `both_lr1e5` | sort shape | +2.0 | 5 | 4 | 1.000 |
+| `both_lr1e5` | slide block | +2.0 | 2 | 1 | 1.000 |
+| `both_lr1e5` | pooled | -4.0 | 12 | 18 | 0.362 |
 | `zoom_object` | insert peg | -12.0 | 10 | 16 | 0.327 |
 | `zoom_object` | sort shape | -6.0 | 4 | 7 | 0.549 |
 | `zoom_object` | slide block | -4.0 | 2 | 4 | 0.688 |
@@ -139,6 +157,12 @@ Success rates: % (successes/episodes) [Wilson 95% CI]; max 12 steps per episode.
 | `both_lr2e5` | insert peg | 21 | 27 | 2 | 5.00 |
 | `both_lr2e5` | sort shape | 25 | 25 | 0 | 5.04 |
 | `both_lr2e5` | slide block | 49 | 1 | 0 | 3.22 |
+| `baseline_lr1e5` | insert peg | 28 | 22 | 0 | 5.00 |
+| `baseline_lr1e5` | sort shape | 22 | 27 | 1 | 5.27 |
+| `baseline_lr1e5` | slide block | 47 | 3 | 0 | 3.17 |
+| `both_lr1e5` | insert peg | 20 | 30 | 0 | 5.00 |
+| `both_lr1e5` | sort shape | 23 | 27 | 0 | 5.04 |
+| `both_lr1e5` | slide block | 49 | 1 | 0 | 3.22 |
 | `zoom_object` | insert peg | 22 | 28 | 0 | 5.00 |
 | `zoom_object` | sort shape | 19 | 31 | 0 | 5.26 |
 | `zoom_object` | slide block | 46 | 4 | 0 | 3.11 |
@@ -156,6 +180,7 @@ Success rates: % (successes/episodes) [Wilson 95% CI]; max 12 steps per episode.
 | `zoom` | 241 | 92 | 55% | 11% | 250 | 2.48× | 80% |
 | `both` | 253 | 185 | 87% | 23% | 251 | 2.43× | 79% |
 | `both_lr2e5` | 241 | 180 | 88% | 22% | 251 | 2.49× | 80% |
+| `both_lr1e5` | 245 | 182 | 88% | 22% | 250 | 2.48× | 80% |
 | `zoom_object` | 1126 | 288 | 31% | 35% | 256 | 1.67× | 88% |
 | `zoom_random` | 31 | 5 | 11% | 1% | 141 | 1.57× | 37% |
 
@@ -169,6 +194,8 @@ Success rates: % (successes/episodes) [Wilson 95% CI]; max 12 steps per episode.
 | `both` | 4000 | 4.4 | 95.0% | 0.135 | 42.3% | 95.0% |
 | `baseline_lr2e5` | 4000 | 5.8 | 94.1% | 0.177 | 68.6% | 95.7% |
 | `both_lr2e5` | 4000 | 2.8 | 96.3% | 0.158 | 61.1% | 95.7% |
+| `baseline_lr1e5` | 4000 | 5.0 | 94.9% | 0.166 | 71.9% | 95.7% |
+| `both_lr1e5` | 4000 | 2.7 | 97.8% | 0.145 | 60.4% | 95.7% |
 | `zoom_object` | 4000 | 5.0 | 92.7% | 0.135 | 54.9% | 95.7% |
 | `zoom_random` | 4000 | 6.4 | 90.6% | 0.130 | 48.0% | 95.7% |
 
@@ -212,6 +239,14 @@ Success rates: % (successes/episodes) [Wilson 95% CI]; max 12 steps per episode.
 | `both_lr2e5` | sort shape | 0.49 | 19.7 | 0.45 | 4.1 | 91% | 97% |
 | `both_lr2e5` | slide block | 0.26 | 1.0 | 0.23 | 1.0 | 98% | 100% |
 | `both_lr2e5` | pooled | 0.33 | 15.9 | 0.33 | 4.0 | 96% | 99% |
+| `baseline_lr1e5` | insert peg | 0.36 | 19.4 | 0.54 | 2.7 | 98% | 100% |
+| `baseline_lr1e5` | sort shape | 0.38 | 18.8 | 0.39 | 3.7 | 93% | 97% |
+| `baseline_lr1e5` | slide block | 0.17 | 0.9 | 0.18 | 0.8 | 100% | 100% |
+| `baseline_lr1e5` | pooled | 0.32 | 14.8 | 0.40 | 2.7 | 97% | 99% |
+| `both_lr1e5` | insert peg | 0.20 | 20.3 | 0.27 | 5.5 | 100% | 100% |
+| `both_lr1e5` | sort shape | 0.40 | 18.8 | 0.45 | 4.2 | 92% | 97% |
+| `both_lr1e5` | slide block | 0.25 | 1.0 | 0.24 | 0.9 | 98% | 100% |
+| `both_lr1e5` | pooled | 0.29 | 15.2 | 0.33 | 4.0 | 96% | 99% |
 | `zoom_object` | insert peg | 0.28 | 19.8 | 0.37 | 4.7 | 99% | 100% |
 | `zoom_object` | sort shape | 0.52 | 17.0 | 0.49 | 3.5 | 91% | 97% |
 | `zoom_object` | slide block | 0.48 | 1.6 | 0.42 | 1.4 | 93% | 100% |

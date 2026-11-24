@@ -14,14 +14,17 @@ import matplotlib.pyplot as plt  # noqa
 ORDER = ["released", "released_part", "released_zoom",
          "baseline", "part", "zoom", "both",
          "baseline_lr2e5", "both_lr2e5",
+         "baseline_lr1e5", "both_lr1e5",
          "zoom_object", "zoom_random"]
 GROUP = {"released": 0, "released_part": 0, "released_zoom": 0,
          "baseline": 1, "part": 1, "zoom": 1, "both": 1,
          "baseline_lr2e5": 2, "both_lr2e5": 2,
+         "baseline_lr1e5": 4, "both_lr1e5": 4,
          "zoom_object": 3, "zoom_random": 3}
 GROUP_NAME = ["released weights (no fine-tuning)", "fine-tuned, lr 1e-4",
-              "fine-tuned, lr 2e-5", "zoom controls (lr 1e-4)"]
-COLORS = ["#2a78d6", "#eb6834", "#1baf7a", "#8c8b86"]
+              "fine-tuned, lr 2e-5", "zoom controls (lr 1e-4)",
+              "fine-tuned, lr 1e-5"]
+COLORS = ["#2a78d6", "#eb6834", "#1baf7a", "#8c8b86", "#7a4fd1"]
 PANELS = [("insert_onto_square_peg", "insert peg (n=50)"),
           ("place_shape_in_shape_sorter", "sort shape (n=50)"),
           ("slide_block_to_color_target", "slide block (n=50)"),

@@ -29,6 +29,7 @@ STEP_CAP = 12  # all variants evaluated with max_steps=12 (released peg ran 25;
 ORDER = ["released", "released_part", "released_zoom",
          "baseline", "part", "zoom", "both",
          "baseline_lr2e5", "both_lr2e5",
+         "baseline_lr1e5", "both_lr1e5",
          "zoom_object", "zoom_random"]
 DESC = {
     "released": "released 3DDA PerAct checkpoint, no fine-tuning (FPS tokens)",
@@ -40,6 +41,8 @@ DESC = {
     "both": "fine-tuned, part-aware sampling + part zoom",
     "baseline_lr2e5": "fine-tuned baseline, lr 2e-5",
     "both_lr2e5": "fine-tuned part sampling + zoom, lr 2e-5",
+    "baseline_lr1e5": "fine-tuned baseline, lr 1e-5",
+    "both_lr1e5": "fine-tuned part sampling + zoom, lr 1e-5",
     "zoom_object": "fine-tuned, whole-object zoom (secondary comparison)",
     "zoom_random": "fine-tuned, random-region zoom (secondary comparison)",
 }

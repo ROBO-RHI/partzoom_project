@@ -343,6 +343,82 @@
    "infer": 6.503239191443831
   },
   {
+   "variant": "baseline_lr1e5",
+   "tasks": {
+    "insert_onto_square_peg": {
+     "k": 28,
+     "n": 50,
+     "ci": [
+      0.4230578680014353,
+      0.6883801278976466
+     ]
+    },
+    "place_shape_in_shape_sorter": {
+     "k": 22,
+     "n": 50,
+     "ci": [
+      0.3116198721023534,
+      0.5769421319985648
+     ]
+    },
+    "slide_block_to_color_target": {
+     "k": 47,
+     "n": 50,
+     "ci": [
+      0.8378265662912299,
+      0.9793854036353695
+     ]
+    }
+   },
+   "all": {
+    "k": 97,
+    "n": 150,
+    "ci": [
+     0.5673798898960487,
+     0.7186285759545403
+    ]
+   },
+   "infer": 2.925628931072023
+  },
+  {
+   "variant": "both_lr1e5",
+   "tasks": {
+    "insert_onto_square_peg": {
+     "k": 20,
+     "n": 50,
+     "ci": [
+      0.2760818978624575,
+      0.5381881089724063
+     ]
+    },
+    "place_shape_in_shape_sorter": {
+     "k": 23,
+     "n": 50,
+     "ci": [
+      0.3296943460178263,
+      0.5960136567161192
+     ]
+    },
+    "slide_block_to_color_target": {
+     "k": 49,
+     "n": 50,
+     "ci": [
+      0.8950431352816304,
+      0.9964608319110235
+     ]
+    }
+   },
+   "all": {
+    "k": 92,
+    "n": 150,
+    "ci": [
+     0.5334964294452139,
+     0.6875101123484232
+    ]
+   },
+   "infer": 3.0505588505835757
+  },
+  {
    "variant": "zoom_object",
    "tasks": {
     "insert_onto_square_peg": {
@@ -474,6 +550,60 @@
     "step": 4000
    }
   ],
+  "baseline_lr1e5": [
+   {
+    "traj_action_mse": 0.2147,
+    "traj_pos_l2": 0.0046,
+    "traj_pos_acc_001": 0.9409,
+    "traj_rot_l1": 0.1679,
+    "traj_rot_acc_0025": 0.7375,
+    "traj_gripper": 0.9572,
+    "pos_l2_final": 0.0046,
+    "pos_l2_final<0.01": 0.9409,
+    "rot_l1": 0.1679,
+    "rot_l1<0025": 0.7375,
+    "step": 1000
+   },
+   {
+    "traj_action_mse": 0.2094,
+    "traj_pos_l2": 0.0034,
+    "traj_pos_acc_001": 0.9628,
+    "traj_rot_l1": 0.1665,
+    "traj_rot_acc_0025": 0.7255,
+    "traj_gripper": 0.9572,
+    "pos_l2_final": 0.0034,
+    "pos_l2_final<0.01": 0.9628,
+    "rot_l1": 0.1665,
+    "rot_l1<0025": 0.7255,
+    "step": 2000
+   },
+   {
+    "traj_action_mse": 0.2206,
+    "traj_pos_l2": 0.0032,
+    "traj_pos_acc_001": 0.9639,
+    "traj_rot_l1": 0.1883,
+    "traj_rot_acc_0025": 0.7046,
+    "traj_gripper": 0.9494,
+    "pos_l2_final": 0.0032,
+    "pos_l2_final<0.01": 0.9639,
+    "rot_l1": 0.1883,
+    "rot_l1<0025": 0.7046,
+    "step": 3000
+   },
+   {
+    "traj_action_mse": 0.2145,
+    "traj_pos_l2": 0.005,
+    "traj_pos_acc_001": 0.9487,
+    "traj_rot_l1": 0.1658,
+    "traj_rot_acc_0025": 0.7191,
+    "traj_gripper": 0.9572,
+    "pos_l2_final": 0.005,
+    "pos_l2_final<0.01": 0.9487,
+    "rot_l1": 0.1658,
+    "rot_l1<0025": 0.7191,
+    "step": 4000
+   }
+  ],
   "baseline_lr2e5": [
    {
     "traj_action_mse": 0.2224,
@@ -579,6 +709,60 @@
     "pos_l2_final<0.01": 0.9498,
     "rot_l1": 0.1349,
     "rot_l1<0025": 0.4232,
+    "step": 4000
+   }
+  ],
+  "both_lr1e5": [
+   {
+    "traj_action_mse": 0.2028,
+    "traj_pos_l2": 0.0042,
+    "traj_pos_acc_001": 0.9639,
+    "traj_rot_l1": 0.1677,
+    "traj_rot_acc_0025": 0.598,
+    "traj_gripper": 0.9494,
+    "pos_l2_final": 0.0042,
+    "pos_l2_final<0.01": 0.9639,
+    "rot_l1": 0.1677,
+    "rot_l1<0025": 0.598,
+    "step": 1000
+   },
+   {
+    "traj_action_mse": 0.2061,
+    "traj_pos_l2": 0.0026,
+    "traj_pos_acc_001": 0.9701,
+    "traj_rot_l1": 0.2034,
+    "traj_rot_acc_0025": 0.6154,
+    "traj_gripper": 0.9572,
+    "pos_l2_final": 0.0026,
+    "pos_l2_final<0.01": 0.9701,
+    "rot_l1": 0.2034,
+    "rot_l1<0025": 0.6154,
+    "step": 2000
+   },
+   {
+    "traj_action_mse": 0.2081,
+    "traj_pos_l2": 0.0036,
+    "traj_pos_acc_001": 0.9492,
+    "traj_rot_l1": 0.1721,
+    "traj_rot_acc_0025": 0.6203,
+    "traj_gripper": 0.9572,
+    "pos_l2_final": 0.0036,
+    "pos_l2_final<0.01": 0.9492,
+    "rot_l1": 0.1721,
+    "rot_l1<0025": 0.6203,
+    "step": 3000
+   },
+   {
+    "traj_action_mse": 0.1994,
+    "traj_pos_l2": 0.0027,
+    "traj_pos_acc_001": 0.9775,
+    "traj_rot_l1": 0.145,
+    "traj_rot_acc_0025": 0.604,
+    "traj_gripper": 0.9572,
+    "pos_l2_final": 0.0027,
+    "pos_l2_final<0.01": 0.9775,
+    "rot_l1": 0.145,
+    "rot_l1<0025": 0.604,
     "step": 4000
    }
   ],
@@ -855,8 +1039,10 @@
  },
  "variants": {
   "baseline": "fine-tuned, upstream FPS token sampling (matched baseline)",
+  "baseline_lr1e5": "fine-tuned baseline, lr 1e-5",
   "baseline_lr2e5": "fine-tuned baseline, lr 2e-5",
   "both": "fine-tuned, part-aware sampling + part zoom",
+  "both_lr1e5": "fine-tuned part sampling + zoom, lr 1e-5",
   "both_lr2e5": "fine-tuned part sampling + zoom, lr 2e-5",
   "part": "fine-tuned, part-aware sampling",
   "released": "released 3DDA PerAct checkpoint, no fine-tuning (FPS tokens)",

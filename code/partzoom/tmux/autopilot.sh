@@ -17,7 +17,7 @@ MODEL=claude-opus-5-5
 P=$R/partzoom/tmux/prompts
 log() { echo "[$(date '+%F %T')] $*" >> $L/autopilot.log; }
 
-[ -f $AP/FINAL_DONE ] && exit 0
+[ -f $AP/R3_FINAL_DONE ] && exit 0      # round 3 written up: stay idle
 
 run_claude() {  # PROMPT_FILE TAG MAXTURNS
   log "launching claude ($2)"
@@ -28,10 +28,10 @@ run_claude() {  # PROMPT_FILE TAG MAXTURNS
   log "claude ($2) exited rc=$?"
 }
 
-if grep -q "^PACKAGE_DONE" $L/pipeline.log; then
-  run_claude $P/finalize.md finalize 300
-  touch $AP/FINAL_DONE
-  log "finalization done; autopilot will stay idle"
+if grep -q "^R3_PACKAGE_DONE" $L/pipeline.log; then
+  run_claude $P/finalize_r3.md finalize_r3 300
+  touch $AP/R3_FINAL_DONE
+  log "round-3 finalization done; autopilot will stay idle"
   exit 0
 fi
 

@@ -1,0 +1,204 @@
+| variant | insert peg | sort shape | slide block | pooled (150) | mean of tasks |
+|---|---|---|---|---|---|
+| `released` | **56** (28/50) [42–69] | **44** (22/50) [31–58] | **96** (48/50) [87–99] | **65** (98/150) [57–72] | 65.3 |
+| `released_part` | **48** (24/50) [35–61] | **38** (19/50) [26–52] | **100** (50/50) [93–100] | **62** (93/150) [54–69] | 62.0 |
+| `released_zoom` | **46** (23/50) [33–60] | **38** (19/50) [26–52] | **94** (47/50) [84–98] | **59** (89/150) [51–67] | 59.3 |
+| `baseline` | **26** (13/50) [16–40] | **34** (17/50) [22–48] | **94** (47/50) [84–98] | **51** (77/150) [43–59] | 51.3 |
+| `part` | **38** (19/50) [26–52] | **42** (21/50) [29–56] | **90** (45/50) [79–96] | **57** (85/150) [49–64] | 56.7 |
+| `zoom` | **34** (17/50) [22–48] | **34** (17/50) [22–48] | **96** (48/50) [87–99] | **55** (82/150) [47–62] | 54.7 |
+| `both` | **36** (18/50) [24–50] | **38** (19/50) [26–52] | **96** (48/50) [87–99] | **57** (85/150) [49–64] | 56.7 |
+| `baseline_lr2e5` | **48** (24/50) [35–61] | **42** (21/50) [29–56] | **94** (47/50) [84–98] | **61** (92/150) [53–69] | 61.3 |
+| `both_lr2e5` | **42** (21/50) [29–56] | **50** (25/50) [37–63] | **98** (49/50) [90–100] | **63** (95/150) [55–71] | 63.3 |
+| `zoom_object` | **44** (22/50) [31–58] | **38** (19/50) [26–52] | **92** (46/50) [81–97] | **58** (87/150) [50–66] | 58.0 |
+| `zoom_random` | **24** (12/50) [14–37] | **26** (13/50) [16–40] | **96** (48/50) [87–99] | **49** (73/150) [41–57] | 48.7 |
+
+| variant | task | Δ SR vs `baseline` (pts) | wins | losses | exact McNemar p |
+|---|---|---|---|---|---|
+| `released` | insert peg | +30.0 | 16 | 1 | 0.000 * |
+| `released` | sort shape | +10.0 | 10 | 5 | 0.302 |
+| `released` | slide block | +2.0 | 2 | 1 | 1.000 |
+| `released` | pooled | +14.0 | 28 | 7 | 0.001 * |
+| `released_part` | insert peg | +22.0 | 14 | 3 | 0.013 * |
+| `released_part` | sort shape | +4.0 | 9 | 7 | 0.804 |
+| `released_part` | slide block | +6.0 | 3 | 0 | 0.250 |
+| `released_part` | pooled | +10.7 | 26 | 10 | 0.011 * |
+| `released_zoom` | insert peg | +20.0 | 15 | 5 | 0.041 * |
+| `released_zoom` | sort shape | +4.0 | 9 | 7 | 0.804 |
+| `released_zoom` | slide block | +0.0 | 2 | 2 | 1.000 |
+| `released_zoom` | pooled | +8.0 | 26 | 14 | 0.081 |
+| `part` | insert peg | +12.0 | 11 | 5 | 0.210 |
+| `part` | sort shape | +8.0 | 7 | 3 | 0.344 |
+| `part` | slide block | -4.0 | 2 | 4 | 0.688 |
+| `part` | pooled | +5.3 | 20 | 12 | 0.215 |
+| `zoom` | insert peg | +8.0 | 10 | 6 | 0.454 |
+| `zoom` | sort shape | +0.0 | 7 | 7 | 1.000 |
+| `zoom` | slide block | +2.0 | 3 | 2 | 1.000 |
+| `zoom` | pooled | +3.3 | 20 | 15 | 0.500 |
+| `both` | insert peg | +10.0 | 12 | 7 | 0.359 |
+| `both` | sort shape | +4.0 | 8 | 6 | 0.791 |
+| `both` | slide block | +2.0 | 3 | 2 | 1.000 |
+| `both` | pooled | +5.3 | 23 | 15 | 0.256 |
+| `baseline_lr2e5` | insert peg | +22.0 | 13 | 2 | 0.007 * |
+| `baseline_lr2e5` | sort shape | +8.0 | 7 | 3 | 0.344 |
+| `baseline_lr2e5` | slide block | +0.0 | 2 | 2 | 1.000 |
+| `baseline_lr2e5` | pooled | +10.0 | 22 | 7 | 0.008 * |
+| `both_lr2e5` | insert peg | +16.0 | 12 | 4 | 0.077 |
+| `both_lr2e5` | sort shape | +16.0 | 14 | 6 | 0.115 |
+| `both_lr2e5` | slide block | +4.0 | 3 | 1 | 0.625 |
+| `both_lr2e5` | pooled | +12.0 | 29 | 11 | 0.006 * |
+| `zoom_object` | insert peg | +18.0 | 15 | 6 | 0.078 |
+| `zoom_object` | sort shape | +4.0 | 7 | 5 | 0.774 |
+| `zoom_object` | slide block | -2.0 | 2 | 3 | 1.000 |
+| `zoom_object` | pooled | +6.7 | 24 | 14 | 0.143 |
+| `zoom_random` | insert peg | -2.0 | 8 | 9 | 1.000 |
+| `zoom_random` | sort shape | -8.0 | 3 | 7 | 0.344 |
+| `zoom_random` | slide block | +2.0 | 3 | 2 | 1.000 |
+| `zoom_random` | pooled | -2.7 | 14 | 18 | 0.597 |
+
+| variant | task | Δ SR vs `released` (pts) | wins | losses | exact McNemar p |
+|---|---|---|---|---|---|
+| `released_part` | insert peg | -8.0 | 3 | 7 | 0.344 |
+| `released_part` | sort shape | -6.0 | 3 | 6 | 0.508 |
+| `released_part` | slide block | +4.0 | 2 | 0 | 0.500 |
+| `released_part` | pooled | -3.3 | 8 | 13 | 0.383 |
+| `released_zoom` | insert peg | -10.0 | 7 | 12 | 0.359 |
+| `released_zoom` | sort shape | -6.0 | 2 | 5 | 0.453 |
+| `released_zoom` | slide block | -2.0 | 1 | 2 | 1.000 |
+| `released_zoom` | pooled | -6.0 | 10 | 19 | 0.136 |
+| `baseline` | insert peg | -30.0 | 1 | 16 | 0.000 * |
+| `baseline` | sort shape | -10.0 | 5 | 10 | 0.302 |
+| `baseline` | slide block | -2.0 | 1 | 2 | 1.000 |
+| `baseline` | pooled | -14.0 | 7 | 28 | 0.001 * |
+| `part` | insert peg | -18.0 | 7 | 16 | 0.093 |
+| `part` | sort shape | -2.0 | 8 | 9 | 1.000 |
+| `part` | slide block | -6.0 | 0 | 3 | 0.250 |
+| `part` | pooled | -8.7 | 15 | 28 | 0.066 |
+| `zoom` | insert peg | -22.0 | 7 | 18 | 0.043 * |
+| `zoom` | sort shape | -10.0 | 8 | 13 | 0.383 |
+| `zoom` | slide block | +0.0 | 2 | 2 | 1.000 |
+| `zoom` | pooled | -10.7 | 17 | 33 | 0.033 * |
+| `both` | insert peg | -20.0 | 9 | 19 | 0.087 |
+| `both` | sort shape | -6.0 | 7 | 10 | 0.629 |
+| `both` | slide block | +0.0 | 2 | 2 | 1.000 |
+| `both` | pooled | -8.7 | 18 | 31 | 0.085 |
+| `baseline_lr2e5` | insert peg | -8.0 | 5 | 9 | 0.424 |
+| `baseline_lr2e5` | sort shape | -2.0 | 6 | 7 | 1.000 |
+| `baseline_lr2e5` | slide block | -2.0 | 1 | 2 | 1.000 |
+| `baseline_lr2e5` | pooled | -4.0 | 12 | 18 | 0.362 |
+| `both_lr2e5` | insert peg | -14.0 | 7 | 14 | 0.189 |
+| `both_lr2e5` | sort shape | +6.0 | 10 | 7 | 0.629 |
+| `both_lr2e5` | slide block | +2.0 | 2 | 1 | 1.000 |
+| `both_lr2e5` | pooled | -2.0 | 19 | 22 | 0.755 |
+| `zoom_object` | insert peg | -12.0 | 10 | 16 | 0.327 |
+| `zoom_object` | sort shape | -6.0 | 4 | 7 | 0.549 |
+| `zoom_object` | slide block | -4.0 | 2 | 4 | 0.688 |
+| `zoom_object` | pooled | -7.3 | 16 | 27 | 0.126 |
+| `zoom_random` | insert peg | -32.0 | 4 | 20 | 0.002 * |
+| `zoom_random` | sort shape | -18.0 | 2 | 11 | 0.022 * |
+| `zoom_random` | slide block | +0.0 | 2 | 2 | 1.000 |
+| `zoom_random` | pooled | -16.7 | 8 | 33 | 0.000 * |
+
+| variant | task | success | timeout (12 steps, wrong poses) | planner error | mean steps to success |
+|---|---|---|---|---|---|
+| `released` | insert peg | 28 | 22 | 0 | 5.04 |
+| `released` | sort shape | 22 | 28 | 0 | 5.09 |
+| `released` | slide block | 48 | 2 | 0 | 3.19 |
+| `released_part` | insert peg | 24 | 26 | 0 | 5.04 |
+| `released_part` | sort shape | 19 | 31 | 0 | 5.11 |
+| `released_part` | slide block | 50 | 0 | 0 | 3.26 |
+| `released_zoom` | insert peg | 23 | 27 | 0 | 5.04 |
+| `released_zoom` | sort shape | 19 | 31 | 0 | 5.16 |
+| `released_zoom` | slide block | 47 | 3 | 0 | 3.15 |
+| `baseline` | insert peg | 13 | 34 | 3 | 5.08 |
+| `baseline` | sort shape | 17 | 33 | 0 | 5.00 |
+| `baseline` | slide block | 47 | 3 | 0 | 3.15 |
+| `part` | insert peg | 19 | 28 | 3 | 5.21 |
+| `part` | sort shape | 21 | 29 | 0 | 5.29 |
+| `part` | slide block | 45 | 5 | 0 | 3.07 |
+| `zoom` | insert peg | 17 | 33 | 0 | 5.00 |
+| `zoom` | sort shape | 17 | 33 | 0 | 4.88 |
+| `zoom` | slide block | 48 | 2 | 0 | 3.19 |
+| `both` | insert peg | 18 | 32 | 0 | 5.00 |
+| `both` | sort shape | 19 | 31 | 0 | 5.68 |
+| `both` | slide block | 48 | 2 | 0 | 3.19 |
+| `baseline_lr2e5` | insert peg | 24 | 26 | 0 | 5.00 |
+| `baseline_lr2e5` | sort shape | 21 | 29 | 0 | 4.95 |
+| `baseline_lr2e5` | slide block | 47 | 3 | 0 | 3.15 |
+| `both_lr2e5` | insert peg | 21 | 27 | 2 | 5.00 |
+| `both_lr2e5` | sort shape | 25 | 25 | 0 | 5.04 |
+| `both_lr2e5` | slide block | 49 | 1 | 0 | 3.22 |
+| `zoom_object` | insert peg | 22 | 28 | 0 | 5.00 |
+| `zoom_object` | sort shape | 19 | 31 | 0 | 5.26 |
+| `zoom_object` | slide block | 46 | 4 | 0 | 3.11 |
+| `zoom_random` | insert peg | 12 | 37 | 1 | 5.00 |
+| `zoom_random` | sort shape | 13 | 37 | 0 | 4.92 |
+| `zoom_random` | slide block | 48 | 2 | 0 | 3.19 |
+
+| variant | in-region coarse tokens available | in-region coarse tokens kept | retention of in-region coarse tokens | share of 819-token budget on parts | in-region fine (zoom) tokens kept | mean crop magnification | crops with ≥4 in-region pixels |
+|---|---|---|---|---|---|---|---|
+| `released_part` | 239 | 215 | 96% | 26% | – | – | – |
+| `released_zoom` | 247 | 81 | 49% | 10% | 249 | 2.45× | 79% |
+| `part` | 250 | 217 | 95% | 26% | – | – | – |
+| `zoom` | 241 | 92 | 55% | 11% | 250 | 2.48× | 80% |
+| `both` | 253 | 185 | 87% | 23% | 251 | 2.43× | 79% |
+| `both_lr2e5` | 241 | 180 | 88% | 22% | 251 | 2.49× | 80% |
+| `zoom_object` | 1126 | 288 | 31% | 35% | 256 | 1.67× | 88% |
+| `zoom_random` | 31 | 5 | 11% | 1% | 141 | 1.57× | 37% |
+
+| variant | iters | final-keypose pos err (mm) | pos < 1 cm | quaternion L1 | quat L1 < 0.025 | gripper acc |
+|---|---|---|---|---|---|---|
+| `baseline` | 4000 | 5.6 | 92.5% | 0.167 | 49.0% | 95.7% |
+| `part` | 4000 | 6.7 | 90.6% | 0.169 | 40.1% | 95.7% |
+| `zoom` | 4000 | 4.4 | 93.6% | 0.163 | 51.3% | 95.7% |
+| `both` | 4000 | 4.4 | 95.0% | 0.135 | 42.3% | 95.0% |
+| `baseline_lr2e5` | 4000 | 5.8 | 94.1% | 0.177 | 68.6% | 95.7% |
+| `both_lr2e5` | 4000 | 2.8 | 96.3% | 0.158 | 61.1% | 95.7% |
+| `zoom_object` | 4000 | 5.0 | 92.7% | 0.135 | 54.9% | 95.7% |
+| `zoom_random` | 4000 | 6.4 | 90.6% | 0.130 | 48.0% | 95.7% |
+
+| variant | task | pos err cm (all kf) | rot err ° (all kf) | pos err cm (interaction kf) | rot err ° (interaction kf) | pos < 1 cm | gripper acc |
+|---|---|---|---|---|---|---|---|
+| `released` | insert peg | 0.47 | 24.3 | 0.71 | 2.3 | 98% | 100% |
+| `released` | sort shape | 0.54 | 17.3 | 0.66 | 3.6 | 91% | 97% |
+| `released` | slide block | 0.21 | 0.8 | 0.20 | 0.6 | 100% | 100% |
+| `released` | pooled | 0.44 | 16.1 | 0.58 | 2.4 | 96% | 99% |
+| `released_part` | insert peg | 0.49 | 24.4 | 0.76 | 2.4 | 98% | 100% |
+| `released_part` | sort shape | 0.56 | 17.2 | 0.69 | 3.8 | 91% | 96% |
+| `released_part` | slide block | 0.27 | 1.0 | 0.26 | 0.8 | 98% | 100% |
+| `released_part` | pooled | 0.47 | 16.1 | 0.62 | 2.6 | 95% | 98% |
+| `released_zoom` | insert peg | 0.37 | 25.6 | 0.55 | 5.4 | 99% | 100% |
+| `released_zoom` | sort shape | 0.56 | 17.2 | 0.71 | 3.4 | 92% | 96% |
+| `released_zoom` | slide block | 0.45 | 1.2 | 0.43 | 1.0 | 95% | 100% |
+| `released_zoom` | pooled | 0.46 | 16.6 | 0.58 | 3.7 | 95% | 98% |
+| `baseline` | insert peg | 0.44 | 17.1 | 0.63 | 2.3 | 99% | 100% |
+| `baseline` | sort shape | 0.54 | 18.2 | 0.65 | 4.9 | 90% | 98% |
+| `baseline` | slide block | 0.44 | 1.8 | 0.33 | 1.6 | 95% | 100% |
+| `baseline` | pooled | 0.48 | 13.9 | 0.57 | 3.2 | 95% | 99% |
+| `part` | insert peg | 0.43 | 16.7 | 0.60 | 2.2 | 98% | 100% |
+| `part` | sort shape | 0.60 | 20.9 | 0.54 | 5.0 | 92% | 98% |
+| `part` | slide block | 0.46 | 2.2 | 0.35 | 2.0 | 88% | 100% |
+| `part` | pooled | 0.50 | 14.9 | 0.52 | 3.3 | 93% | 99% |
+| `zoom` | insert peg | 0.28 | 20.5 | 0.30 | 3.9 | 100% | 100% |
+| `zoom` | sort shape | 0.49 | 19.5 | 0.57 | 3.6 | 90% | 96% |
+| `zoom` | slide block | 0.41 | 1.7 | 0.31 | 1.7 | 98% | 100% |
+| `zoom` | pooled | 0.39 | 15.7 | 0.40 | 3.3 | 96% | 98% |
+| `both` | insert peg | 0.21 | 19.2 | 0.23 | 3.4 | 100% | 100% |
+| `both` | sort shape | 0.42 | 19.1 | 0.47 | 4.5 | 94% | 95% |
+| `both` | slide block | 0.50 | 2.0 | 0.33 | 2.4 | 90% | 100% |
+| `both` | pooled | 0.35 | 15.1 | 0.35 | 3.6 | 95% | 98% |
+| `baseline_lr2e5` | insert peg | 0.48 | 20.3 | 0.74 | 4.0 | 97% | 100% |
+| `baseline_lr2e5` | sort shape | 0.40 | 19.1 | 0.41 | 3.5 | 93% | 97% |
+| `baseline_lr2e5` | slide block | 0.18 | 1.1 | 0.18 | 1.0 | 100% | 100% |
+| `baseline_lr2e5` | pooled | 0.38 | 15.3 | 0.49 | 3.1 | 96% | 99% |
+| `both_lr2e5` | insert peg | 0.20 | 21.3 | 0.27 | 5.5 | 100% | 100% |
+| `both_lr2e5` | sort shape | 0.49 | 19.7 | 0.45 | 4.1 | 91% | 97% |
+| `both_lr2e5` | slide block | 0.26 | 1.0 | 0.23 | 1.0 | 98% | 100% |
+| `both_lr2e5` | pooled | 0.33 | 15.9 | 0.33 | 4.0 | 96% | 99% |
+| `zoom_object` | insert peg | 0.28 | 19.8 | 0.37 | 4.7 | 99% | 100% |
+| `zoom_object` | sort shape | 0.52 | 17.0 | 0.49 | 3.5 | 91% | 97% |
+| `zoom_object` | slide block | 0.48 | 1.6 | 0.42 | 1.4 | 93% | 100% |
+| `zoom_object` | pooled | 0.42 | 14.5 | 0.43 | 3.5 | 95% | 99% |
+| `zoom_random` | insert peg | 0.50 | 17.5 | 0.74 | 2.9 | 98% | 100% |
+| `zoom_random` | sort shape | 0.72 | 20.5 | 0.90 | 5.1 | 88% | 95% |
+| `zoom_random` | slide block | 0.43 | 1.6 | 0.34 | 1.6 | 94% | 100% |
+| `zoom_random` | pooled | 0.57 | 14.9 | 0.71 | 3.5 | 93% | 98% |

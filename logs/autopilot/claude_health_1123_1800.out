@@ -1,0 +1,17 @@
+Nothing was stuck, so I changed nothing.
+
+**Why the alarm fired:** rounds 1–2 finished at 12:12 (`PACKAGE_DONE`), and nothing was written to the logs for the next 5+ hours. That quiet period set off the 100-minute stall check at 18:00.
+
+**What's running now:** at 18:00, a few seconds before this check started, your VS Code Claude session swapped the old windows for status, r3train, r3eval1, r3eval2 and r3final and started round 3:
+- **r3train:** `baseline_lr1e5` training has started (0/4000 iterations), with the same command as `train_queue.sh` plus `--token_mode fps --lr 1e-5`.
+- **r3eval1:** rollout eval of `released` on episodes 0:100 with `--max_steps 12`. It holds the claim in `claims_r3/released`.
+- **r3eval2:** waiting for `R3TRAIN_DONE`, as designed.
+- **r3final:** waiting for both `R3EVALQ_DONE` markers, as designed.
+
+**Checks:**
+- None of the panes show a Traceback, OOM or CUDA error.
+- RAM has 12 GB available. The GPU was still idle because the jobs were only seconds old and loading.
+- Every file the round-3 scripts and the autopilot depend on is present, including `finalize_r3.md` and `ext_tables.py`.
+- The "Can't find dataset folder …+19" warnings in r3train also appeared in earlier training runs.
+
+I added a dated note to `logs_partzoom/autopilot.log`. I didn't edit any script, results file, claim directory or `RESULTS.md`, and nothing was sent outside the machine.

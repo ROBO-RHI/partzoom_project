@@ -35,7 +35,8 @@ def mcnemar_exact(b, c):
     return min(1.0, 2 * p)
 
 
-def load_rollouts(root, step_cap=None):
+def load_rollouts(root, step_cap=None, episodes=(0, 50)):
+    """episodes: [lo, hi) test-scene ids to keep (main tables use 0-49)."""
     out = {}
     for d in sorted(glob.glob(f"{root}/*")):
         name = Path(d).name
@@ -43,6 +44,8 @@ def load_rollouts(root, step_cap=None):
         for f in glob.glob(f"{d}/*.jsonl"):
             for line in open(f):
                 r = json.loads(line)
+                if episodes is not None and not (episodes[0] <= r["episode"] < episodes[1]):
+                    continue
                 if step_cap is not None:
                     r["success"] = r["success"] and r["steps"] <= step_cap
                 recs[(r["task"], r["episode"])] = r
