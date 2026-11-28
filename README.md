@@ -36,7 +36,9 @@ results/
   rollouts/<variant>/<task>.jsonl   one line per test episode: success, steps, failure type,
                                     per-step predicted keyposes, token statistics, inference time
   offline/<name>.json  per-keyframe val errors for every variant and sweep; bench_infer.json
-checkpoints/<variant>/last.pth (+ hparams.json)   all fine-tuned models + released checkpoint
+checkpoints/released/diffuser_actor_peract.pth   released 3DDA PerAct checkpoint (git LFS, 161 MB)
+checkpoints/<variant>/weights_delta.pth          every fine-tuned model as a compact delta (git LFS, ~12 MB)
+checkpoints/<variant>/hparams.json               full training configuration and command line
 logs/                  training logs (val metrics every 1000 it), eval logs, generation logs,
                        pipeline.log (timeline), tensorboard/
 figs/regions_peg_ep0.png   oracle regions and zoom crops, checked visually
@@ -79,3 +81,15 @@ python partzoom/extra_tables.py --out .. && python partzoom/ext_tables.py --out 
 The flags for every variant, at training and evaluation, are listed in `code/partzoom/pipeline.sh`, `pipeline2.sh` and `tmux/eval_worker.sh`; the offline evaluations, sweeps and benchmark are in `pipeline3.sh`. Each training run's full command line is saved in `checkpoints/<variant>/hparams.json` under `reproducibility.command_line`.
 
 Environment: AWS instance, one NVIDIA T4 (16 GB), 4 vCPUs, 15 GB RAM. Software: conda env `3d_diffuser_actor` (PyTorch with CUDA, DGL 1.1.2 cu116, CLIP), CoppeliaSim 4.1, and the PyRep and RLBench PerAct forks installed in `~/PyRep` and `~/RLBench`.
+
+## Checkpoints (Git LFS)
+
+The checkpoints are stored with [Git LFS](https://git-lfs.com). After cloning, run `git lfs install && git lfs pull`, or install git-lfs before cloning.
+
+- `checkpoints/released/diffuser_actor_peract.pth` is the released 3D Diffuser Actor PerAct checkpoint, unchanged. Every fine-tuned model starts from it.
+- `checkpoints/<variant>/weights_delta.pth` holds **only the tensors that changed during fine-tuning** (about 11 MB of the 160 MB of weights; the frozen CLIP conv weights are identical) plus the SHA-256 of the released checkpoint. On load it is overlaid on the released checkpoint, which rebuilds the exact full weights. Every delta was checked to rebuild a state dict bit-for-bit identical to the original `last.pth`. Optimizer state is not included, so it is enough for evaluation and further fine-tuning but not for resuming the exact training run.
+- `code/partzoom/model.py: load_released_weights()` accepts either format, so all scripts take a delta path directly. For example: `run_eval.sh both_lr1e5 ../checkpoints/both_lr1e5/weights_delta.pth insert_onto_square_peg 0:100 --max_steps 12 --token_mode part --zoom 1`. To write out a full checkpoint instead:
+  ```python
+  from partzoom.delta_ckpt import load_full_state_dict
+  import torch; torch.save({"weight": load_full_state_dict("checkpoints/zoom/weights_delta.pth")}, "zoom_full.pth")
+  ```

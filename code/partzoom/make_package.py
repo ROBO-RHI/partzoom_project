@@ -263,6 +263,13 @@ def main():
             for f in ["last.pth", "hparams.json"]:
                 if (Path(d) / f).exists():
                     copy(Path(d) / f, ck / n / f)
+            # compact, bit-exact delta vs the released checkpoint (published via git LFS;
+            # last.pth itself stays local / gitignored)
+            if (ck / n / "last.pth").exists():
+                from delta_ckpt import make_delta, check
+                rel = ck / "released/diffuser_actor_peract.pth"
+                make_delta(rel, ck / n / "last.pth", ck / n / "weights_delta.pth")
+                check(rel, ck / n / "last.pth", ck / n / "weights_delta.pth")
             for f in glob.glob(f"{d}/events.out.tfevents*"):
                 copy(f, out / "logs/tensorboard" / n / Path(f).name)
 

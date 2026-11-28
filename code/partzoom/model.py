@@ -245,9 +245,8 @@ class PartZoomDiffuserActor(DiffuserActor):
 
 
 def load_released_weights(model, path):
-    sd = torch.load(path, map_location='cpu')
-    sd = sd.get('weight', sd)
-    sd = {k[len('module.'):] if k.startswith('module.') else k: v
-          for k, v in sd.items()}
+    """Load a full checkpoint or a compact delta file (partzoom/delta_ckpt.py)."""
+    from partzoom.delta_ckpt import load_full_state_dict
+    sd = load_full_state_dict(path)
     missing, unexpected = model.load_state_dict(sd, strict=False)
     return missing, unexpected
