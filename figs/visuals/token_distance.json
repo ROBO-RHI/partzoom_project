@@ -1,0 +1,30 @@
+{
+ "fps": {
+  "median_cm": 29.928597807884216,
+  "within_5cm": 0.10250774866159482,
+  "within_10cm": 0.17541091387245233,
+  "in_part_regions": 0.10840612379073918,
+  "n_keyframes": 260
+ },
+ "part": {
+  "median_cm": 27.21361517906189,
+  "within_5cm": 0.15919038226730534,
+  "within_10cm": 0.2598948060486522,
+  "in_part_regions": 0.23210293979524751,
+  "n_keyframes": 260
+ },
+ "both": {
+  "median_cm": 22.25995510816574,
+  "within_5cm": 0.20331079177233025,
+  "within_10cm": 0.31423875270029117,
+  "in_part_regions": 0.5083497698882314,
+  "n_keyframes": 260
+ },
+ "all 4096 scene tokens": {
+  "median_cm": 54.04658913612366,
+  "within_5cm": 0.04828632061298077,
+  "within_10cm": 0.10612229567307692,
+  "in_part_regions": 0.050912710336538464,
+  "n_keyframes": 260
+ }
+}

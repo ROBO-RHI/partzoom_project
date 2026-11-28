@@ -22,6 +22,51 @@ The total token budget is identical (819) for every variant. Regions are **oracl
 
 Each method was fine-tuned from the released checkpoint with the same recipe. FPS, part, zoom, both and the two zoom controls were trained at lr 1e-4. Matched FPS/both pairs were also trained at lr 2e-5 (`baseline_lr2e5`, `both_lr2e5`) and lr 1e-5 (`baseline_lr1e5`, `both_lr1e5`; round 3). The released weights were also run with part sampling or zoom applied zero-shot. The full list of runs is in RESULTS.md §1.
 
+## Visuals
+
+All images and videos are in [`figs/visuals/`](figs/visuals). Full-resolution MP4s for slides are in [`figs/visuals/videos/`](figs/visuals/videos). Part regions in every visual are **oracle (privileged) simulator information**.
+
+### Where the token budget goes
+
+Each method keeps 819 visual tokens for the trajectory's self-attention. Upstream FPS spreads them across the whole scene. Part-aware sampling and part zoom concentrate them on the manipulated part and the receiving part, which is where the end effector interacts.
+
+![token selection, insert peg](figs/visuals/tokens_insert_onto_square_peg.png)
+
+*Held-out insert-peg demo. Columns: scene with oracle part regions (cyan), then the tokens kept by upstream FPS, part-aware sampling, and part-aware + zoom (dots; heat = token density; light-cyan dots = fine zoom tokens), then the two 128-px zoom crops per camera. Same figure for the other tasks: [sort shape](figs/visuals/tokens_place_shape_in_shape_sorter.png), [slide block](figs/visuals/tokens_slide_block_to_color_target.png).*
+
+| upstream FPS vs ours, over one demo (front and wrist cameras) | |
+|---|---|
+| ![](figs/visuals/token_focus_insert_onto_square_peg.gif) | ![](figs/visuals/token_focus_place_shape_in_shape_sorter.gif) |
+
+### How close the tokens are to the end effector
+
+![token distance](figs/visuals/token_distance.png)
+
+Measured over 260 held-out keyframes from the 3 tasks:
+
+| tokens | median distance to end effector | within 5 cm | within 10 cm | inside oracle parts |
+|---|---|---|---|---|
+| all 4096 scene tokens (reference) | 54.0 cm | 4.8% | 10.6% | 5.1% |
+| upstream FPS (819) | 29.9 cm | 10.3% | 17.5% | 10.8% |
+| part-aware sampling (819) | 27.2 cm | 15.9% | 26.0% | 23.2% |
+| **part-aware + part zoom (819)** | **22.3 cm** | **20.3%** | **31.4%** | **50.8%** |
+
+Raw numbers are in [`figs/visuals/token_distance.json`](figs/visuals/token_distance.json).
+
+### Closed-loop rollouts: matched baseline vs ours on the same test scene
+
+Each video runs `baseline_lr1e5` (upstream FPS) and `both_lr1e5` (part-aware + zoom) on the same held-out scene, with the same seed. The insets show the tokens each policy used at its latest decision (white ring = predicted next keypose). The policy sees only its usual four 256-px cameras; the large view comes from an extra camera added only for the video.
+
+| ours succeeds, baseline fails (insert peg, scene 8) |
+|---|
+| ![](figs/visuals/rollout_insert_onto_square_peg_ep8_fail_ok.gif) |
+| **ours succeeds, baseline fails (sort shape, scene 27)** |
+| ![](figs/visuals/rollout_place_shape_in_shape_sorter_ep27_fail_ok.gif) |
+| **baseline succeeds, ours fails (insert peg, scene 4)** |
+| ![](figs/visuals/rollout_insert_onto_square_peg_ep4_ok_fail.gif) |
+
+These clips are **selected examples, not a summary of performance**. Over 100 scenes per task the two models are statistically tied (RESULTS.md, Round 3), and insert peg is where ours does worse. [`figs/visuals/videos/`](figs/visuals/videos) has 18 rollouts across all three tasks, covering wins, losses and ties for both models. Each video is a fresh re-run; on borderline scenes the outcome can differ from the logged evaluation, because of GPU-level numerical noise. File names end in `<baseline>_<ours>` outcome (`ok`/`fail`) for that run.
+
 ## Folder layout
 
 ```
@@ -43,6 +88,7 @@ logs/                  training logs (val metrics every 1000 it), eval logs, gen
                        pipeline.log (timeline), tensorboard/
 figs/regions_peg_ep0.png   oracle regions and zoom crops, checked visually
 figs/success_rates.png     success per task and variant with Wilson CIs (make_fig.py)
+figs/visuals/              token-selection figures, token-distance plot, GIFs; videos/ = MP4 rollouts for slides
 data/seeds/            exact episode definitions for train/val/test (reproduces the test scenes)
 data/packaged -> symlink to the 6.2 GB of packaged train/val demos
 code/                  runnable snapshot: upstream 3DDA modules + partzoom/ (our code)
